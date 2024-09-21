@@ -9,4 +9,6 @@ Gem::Specification.new do |s|
     s.require_path = 'lib'
     s.homepage    = 'https://github.com/erluti/tivitylog'
     s.executables << "tivitylog"
+
+    s.add_development_dependency "rspec"
   end

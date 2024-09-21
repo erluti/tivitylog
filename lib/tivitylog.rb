@@ -1,3 +1,4 @@
-class Tivitylog
-  puts 'this is happening'
+require 'tivitylog/logger'
+
+module Tivitylog
 end
