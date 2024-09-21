@@ -2,4 +2,4 @@
 
 require 'tivitylog'
 
-Tivitylog::Logger.new
+Tivitylog::CreateFile.new('something.txt').perform
