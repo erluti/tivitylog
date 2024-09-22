@@ -5,14 +5,16 @@ module Tivitylog
   class Logger
     attr_reader :filename
 
-    def initialize(filename=default_filename)
+    def initialize(process_details = {}, filename: default_filename)
       @filename = filename
       File.open(filename, 'a'){ |f| f.write("---\n") } unless File.exist?(filename)
+      @process_details = process_details
     end
 
     def entry(data)
+      entry_data = data.merge(@process_details)
       File.open(filename, 'a') do |f|
-        f.write([data].to_yaml.gsub("---\n", ''))
+        f.write([entry_data].to_yaml.gsub("---\n", ''))
       end
     end
 

@@ -20,17 +20,24 @@ describe Tivitylog::Logger do
     end
     describe '#entry' do
       it 'is parsable yaml' do
-        logger = described_class.new(file)
+        logger = described_class.new(filename: file)
         logger.entry({ something: 'value' })
         log = YAML.load_file(file)
         expect(log.count).to eq 1
       end
       it 'appends to the file' do
-        logger = described_class.new(file)
+        logger = described_class.new(filename: file)
         logger.entry({ something: 'value' })
         logger.entry({ something: 'value2' })
         log = YAML.load_file(file)
         expect(log.count).to eq 2
+      end
+      it 'includes process data' do
+        extra = { 'hello' => 'hi' }
+        logger = described_class.new(extra, filename: file)
+        logger.entry({ something: 'value' })
+        log = YAML.load_file(file)
+        expect(log.first['hello']).to eq extra['hello']
       end
     end
   end

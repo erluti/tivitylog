@@ -2,4 +2,13 @@
 
 require 'tivitylog'
 
-Tivitylog::CreateFile.new('something.txt').perform
+logger = Tivitylog::Logger.new({
+  timestamp: Time.now,
+  username: Etc.getlogin,
+  process: Process.argv0,
+  command_ine: "#{Process.argv0} #{ARGV.join(' ')}",
+  pid: Process.pid
+})
+
+create_file = ARGV[0]
+Tivitylog::CreateFile.new(create_file, logger).perform
