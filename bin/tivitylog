@@ -20,6 +20,9 @@ activity =
   when 'modify'
     file = args.shift
     Tivitylog::ModifyFile.new(file, logger)
+  when 'delete'
+    file = args.shift
+    Tivitylog::DeleteFile.new(file, logger)
   else
     raise 'no activity provided'
   end
