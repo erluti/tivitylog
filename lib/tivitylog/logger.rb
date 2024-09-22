@@ -11,7 +11,7 @@ module Tivitylog
       @process_details = process_details
     end
 
-    def entry(data)
+    def entry(data = {})
       entry_data = data.merge(@process_details)
       File.open(filename, 'a') do |f|
         f.write([entry_data].to_yaml.gsub("---\n", ''))

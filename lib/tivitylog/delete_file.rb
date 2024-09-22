@@ -1,5 +1,3 @@
-require 'etc'
-
 module Tivitylog
   class DeleteFile
     attr_reader :logger, :filename
@@ -9,7 +7,6 @@ module Tivitylog
     end
 
     def perform
-      start = Time.now
       File.delete(filename) if File.exist?(filename)
       logger.entry({
         path: filename, # full path

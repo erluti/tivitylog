@@ -1,5 +1,3 @@
-require 'etc'
-
 module Tivitylog
   class ModifyFile
     attr_reader :logger, :filename
@@ -9,7 +7,6 @@ module Tivitylog
     end
 
     def perform
-      start = Time.now
       File.open(filename, "a") { |f| f.write "File Modified." }
       logger.entry({
         path: filename, # full path

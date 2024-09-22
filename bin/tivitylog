@@ -23,6 +23,8 @@ activity =
   when 'delete'
     file = args.shift
     Tivitylog::DeleteFile.new(file, logger)
+  when 'run'
+    Tivitylog::RunProcess.new(args, logger)
   else
     raise 'no activity provided'
   end
