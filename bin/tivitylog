@@ -10,5 +10,18 @@ logger = Tivitylog::Logger.new({
   pid: Process.pid
 })
 
-create_file = ARGV[0]
-Tivitylog::CreateFile.new(create_file, logger).perform
+args = ARGV.dup
+command = args.shift
+activity =
+  case command
+  when 'create'
+    file = args.shift
+    Tivitylog::CreateFile.new(file, logger)
+  when 'modify'
+    file = args.shift
+    Tivitylog::ModifyFile.new(file, logger)
+  else
+    raise 'no activity provided'
+  end
+
+activity.perform
