@@ -2,3 +2,4 @@
 tmp/*
 .vscode
 *activitylog.yaml
+*.DS_Store

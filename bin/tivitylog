@@ -6,7 +6,7 @@ logger = Tivitylog::Logger.new({
   timestamp: Time.now,
   username: Etc.getlogin,
   process: Process.argv0,
-  command_ine: "#{Process.argv0} #{ARGV.join(' ')}",
+  command_line: "#{Process.argv0} #{ARGV.join(' ')}",
   pid: Process.pid
 })
 
@@ -25,6 +25,9 @@ activity =
     Tivitylog::DeleteFile.new(file, logger)
   when 'run'
     Tivitylog::RunProcess.new(args, logger)
+  when 'transmit'
+    # args could support new types
+    Tivitylog::HttpPost.new(args, logger)
   else
     raise 'no activity provided'
   end
