@@ -9,8 +9,8 @@ module Tivitylog
     def perform
       File.delete(filename) if File.exist?(filename)
       logger.entry({
-        path: filename, # full path
-        activity: 'delete'
+        path: File.expand_path(filename),
+        file_activity: 'delete'
       })
     end
   end

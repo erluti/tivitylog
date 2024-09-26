@@ -29,7 +29,8 @@ activity =
     # args could support new types
     Tivitylog::HttpPost.new(args, logger)
   else
-    raise 'no activity provided'
+    # TODO: help output
+    raise "no activity provided - #{command} is not an activity"
   end
 
 activity.perform

@@ -39,8 +39,7 @@ module Tivitylog
         destination: { address: destination_address, port: destination_port },
         source: { address: source_address, port: source_port },
         data_size: content.size,
-        protocol: protocol,
-        activity: 'net connect and transmit'
+        protocol: protocol
       })
     end
   end

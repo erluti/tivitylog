@@ -9,8 +9,8 @@ module Tivitylog
     def perform
       File.open(filename, "a") { |f| f.write "File Modified." }
       logger.entry({
-        path: filename, # full path
-        activity: 'modify'
+        path: File.expand_path(filename),
+        file_activity: 'modify'
       })
     end
   end

@@ -9,8 +9,8 @@ module Tivitylog
     def perform
       File.open(filename, "w") {}
       logger.entry({
-        path: filename, # full path
-        activity: 'create'
+        path: File.expand_path(filename),
+        file_activity: 'create'
       })
     end
   end
