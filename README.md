@@ -6,15 +6,15 @@ This gem is a commandline tool to run some simple processes and create a log ent
 
 Five activities are currently supported:
 * `tivitylog create [filename]`
-  This will create an empty file with the name provided.
+  - This will create an empty file with the name provided.
 * `tivitylog modify [filename]`
-  This will modify the file named by adding the text "File Modified.".
+  - This will modify the file named by adding the text "File Modified.".
 * `tivitylog delete [filename]`
-  This will delete the named file.
+  - This will delete the named file.
 * `tivitylog transmit`
-  This will make an HTTP get to `https://httpbin.org/get`.
+  - This will make an HTTP get to `https://httpbin.org/get`.
 * `tivitylog run [unix instruction]`
-  This will run the unix instraction.  For example, "tivitylog run ls -la" will run "ls -la".
+  - This will run the unix instraction.  For example, "tivitylog run ls -la" will run "ls -la".
 
 ## WIP
 
